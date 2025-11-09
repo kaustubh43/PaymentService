@@ -50,3 +50,7 @@ hs_err_pid*
 # Misc
 logs/
 *.tmp
+
+# Environment files
+.env
+.env.*
