@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controller for Payments
+ */
 @RestController
 @RequestMapping("/payment")
 public class PaymentControllers {
@@ -19,6 +22,11 @@ public class PaymentControllers {
         this.paymentService = paymentService;
     }
 
+    /**
+     * Method for initiating payments
+     * @param request : Dto for Initiating Payments
+     * @return String : URL for the payment
+     */
     @PostMapping()
     public String initiatePayment(@RequestBody InitiatePaymentRequestDto request) {
         return "Payment initiated successfully.";
