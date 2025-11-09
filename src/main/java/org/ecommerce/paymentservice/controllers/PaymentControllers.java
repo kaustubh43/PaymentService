@@ -27,8 +27,14 @@ public class PaymentControllers {
      * @param request : Dto for Initiating Payments
      * @return String : URL for the payment
      */
-    @PostMapping()
+    @PostMapping
     public String initiatePayment(@RequestBody InitiatePaymentRequestDto request) {
-        return "Payment initiated successfully.";
+        return paymentService.getPaymentLink(
+                request.getAmount(),
+                request.getOrderId(),
+                request.getPhoneNumber(),
+                request.getName(),
+                request.getEmail()
+        );
     }
 }

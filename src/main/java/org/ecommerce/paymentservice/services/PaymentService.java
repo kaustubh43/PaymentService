@@ -22,8 +22,12 @@ public class PaymentService implements IPaymentService {
      * @throws RuntimeException if no payment gateway is available or the chosen gateway fails to
      *         generate a link. Implementations may throw more specific runtime exceptions.
      */
-    public String getPaymentLink() {
+    public String getPaymentLink(Double amount,
+                                 String orderId,
+                                 String phoneNumber,
+                                 String name,
+                                 String email) {
         IPaymentGateway paymentGateway = paymentGatewayChooserStrategy.getBestPerformingPaymentGateway();
-        return paymentGateway.generatePaymentLink();
+        return paymentGateway.generatePaymentLink(amount, orderId, phoneNumber, name, email);
     }
 }
