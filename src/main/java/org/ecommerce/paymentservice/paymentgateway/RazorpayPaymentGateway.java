@@ -27,7 +27,7 @@ public class RazorpayPaymentGateway implements IPaymentGateway {
             paymentLinkRequest.put("currency", "INR");
             paymentLinkRequest.put("accept_partial", true);
             paymentLinkRequest.put("first_min_partial_amount", 100);
-            paymentLinkRequest.put("expire_by", 1763391692); // Hard coded to 17 Nov 2025. Todo: Make dynamic.
+            paymentLinkRequest.put("expire_by", 1767225599); // Hard coded to 17 Nov 2025. Todo: Make dynamic.
             paymentLinkRequest.put("reference_id", orderId);
             paymentLinkRequest.put("description", "Payment for policy no #" + orderId);
             JSONObject customer = new JSONObject();

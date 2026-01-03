@@ -21,6 +21,16 @@ public class RazorpayConfiguration {
 
     @Bean
     public RazorpayClient getRazorpayClient() throws RazorpayException {
+        validateCredentials();
+
+        log.info("Creating RazorpayClient with key id={}", mask(razorPayId));
+        return new RazorpayClient(razorPayId, razorPaySecret);
+    }
+
+    /**
+     * Method to validate Razorpay credentials.
+     */
+    private void validateCredentials() {
         // Validate that credentials are present and not empty. If they are missing,
         // fail fast with a clear error message so it's obvious at startup/config time
         // instead of getting an opaque authentication error from the SDK later.
@@ -32,9 +42,6 @@ public class RazorpayConfiguration {
             log.error(msg);
             throw new IllegalStateException(msg);
         }
-
-        log.info("Creating RazorpayClient with key id={}", mask(razorPayId));
-        return new RazorpayClient(razorPayId, razorPaySecret);
     }
 
     private String mask(String s) {

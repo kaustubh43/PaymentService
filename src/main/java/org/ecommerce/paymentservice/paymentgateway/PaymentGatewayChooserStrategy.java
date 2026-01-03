@@ -1,6 +1,7 @@
 package org.ecommerce.paymentservice.paymentgateway;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
@@ -11,8 +12,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class PaymentGatewayChooserStrategy {
 
-    @Autowired
     private IPaymentGateway paymentGateway;
+
+    @Autowired
+    public PaymentGatewayChooserStrategy(@Qualifier("razorpayPaymentGateway") IPaymentGateway paymentGateway) {
+        this.paymentGateway = paymentGateway;
+    }
 
     /**
         Returns the best performing payment gateway.
